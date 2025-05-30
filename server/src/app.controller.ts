@@ -16,12 +16,10 @@ export class AppController {
   uploadImage(@Body() data: ImgDTO, @Query('id') id: string) {
     try {
       const img = data.img.replace('data:image/png;base64,', '');
-      const imgPath = path.resolve(__dirname, '..', 'static', `${id}.jpg`);
-      if(!imgPath) fs.mkdirSync(imgPath)
-      fs.writeFileSync(
-        imgPath,
+      fs.appendFileSync(
+        path.resolve(__dirname, '..', 'static', `${id}.jpg`),
         img,
-        'base64',
+        { encoding: 'base64' },
       );
       return 'File uploaded';
     } catch (e) {
