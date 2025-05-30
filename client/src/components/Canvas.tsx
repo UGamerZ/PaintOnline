@@ -43,7 +43,7 @@ const Canvas = observer(() => {
 
   useEffect(() => {
     if (canvasState.username) {
-      const socket = new WebSocket("wss://paintonline.onrender.com:8000");
+      const socket = new WebSocket("wss://paintonline.onrender.com");
       canvasState.setSocket(socket);
       canvasState.setSessionID(id);
       toolState.setTool(new Brush(canvasRef.current, socket));
