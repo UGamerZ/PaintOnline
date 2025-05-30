@@ -1,0 +1,60 @@
+@import "variables";
+
+.toolbar{
+  height: $toolbar-height;
+  background-color: $palette-second;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  box-shadow: 0 4px 5px $palette-third;
+  padding: 20px;
+  gap: 20px;
+
+  &__btn {
+    height: 25px;
+    width: 25px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: $palette-second;
+    background-size: cover;
+
+    &:active {
+      transform: scale(0.90);
+    }
+  }
+
+  .brush {
+    background: url("../assets/images/brush.svg") no-repeat center center;
+  }
+
+  .rectangle {
+    background: url("../assets/images/square-dashed-top-solid.svg");
+  }
+
+  .circle {
+    background: url("../assets/images/circle-dashed.svg");
+  }
+
+  .line {
+    background: url("../assets/images/pencil-line.svg");
+  }
+
+  .eraser {
+    background: url("../assets/images/eraser.svg");
+  }
+
+  .undo {
+    background: url("../assets/images/undo.svg");
+    margin-left: auto;
+  }
+
+  .redo {
+    background: url("../assets/images/redo.svg");
+  }
+
+  .save {
+    background: url("../assets/images/save.svg");
+  }
+}
