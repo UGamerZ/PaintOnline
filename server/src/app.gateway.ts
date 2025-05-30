@@ -9,7 +9,7 @@ import { DataDTO } from './types/data';
 import { SocketPersonal } from './types/socket';
 import { broadcastConnection, connectionHandler } from './socket-functions';
 
-@WebSocketGateway()
+@WebSocketGateway(8000)
 export class AppGateway {
   @WebSocketServer()
   server: Server;
