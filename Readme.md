@@ -8,4 +8,4 @@
 
 # Рабочая версия
 
-Проект задеплоен и потыкать его можно здесь: https://paintonlinevladislav.netlify.app/
+Проект задеплоен и потыкать его можно здесь: https://paint-online-9eec5.web.app/
