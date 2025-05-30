@@ -17,7 +17,7 @@ export class AppController {
     try {
       const img = data.img.replace('data:image/png;base64,', '');
       fs.appendFileSync(
-        path.resolve(__dirname, '..', 'static', `${id}.jpg`),
+        path.join(__dirname, '..', 'static', `${id}.jpg`),
         img,
         { encoding: 'base64' },
       );
