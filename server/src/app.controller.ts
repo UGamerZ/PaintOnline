@@ -16,8 +16,9 @@ export class AppController {
   uploadImage(@Body() data: ImgDTO, @Query('id') id: string) {
     try {
       const img = data.img.replace('data:image/png;base64,', '');
+      fs.mkdirSync(path.resolve(__dirname, '..', 'static'));
       fs.appendFileSync(
-        path.resolve(process.cwd(), '..', 'static', `${id}.jpg`),
+        path.resolve(__dirname, '..', 'static', `${id}.jpg`),
         img,
         { encoding: 'base64' },
       );
