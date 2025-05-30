@@ -27,6 +27,7 @@ export default class Rectangle extends Tool {
       JSON.stringify({
         method: "draw",
         id: canvasState.data?.id,
+        username: canvasState.data?.username,
         figure: {
           type: "finish",
         },

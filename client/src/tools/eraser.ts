@@ -13,6 +13,7 @@ export default class Eraser extends Brush {
         JSON.stringify({
           method: "draw",
           id: canvasState.data?.id,
+          username: canvasState.data?.username,
           figure: {
             type: "eraser",
             lineWidth: this.ctx?.lineWidth,

@@ -14,6 +14,7 @@ export default class Ellipse extends Rectangle {
       this.socket.send(
         JSON.stringify({
           id: canvasState.data?.id,
+          username: canvasState.data?.username,
           method: "draw",
           figure: {
             type: "ellipse",

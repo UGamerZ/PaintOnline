@@ -13,6 +13,7 @@ export default class Line extends Rectangle {
         JSON.stringify({
           method: "draw",
           id: canvasState.data?.id,
+          username: canvasState.data?.username,
           figure: {
             type: "line",
             strokeCol: this.ctx?.strokeStyle,

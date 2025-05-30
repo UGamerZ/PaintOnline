@@ -17,7 +17,7 @@ const Canvas = observer(() => {
 
   useEffect(() => {
     canvasState.setCanvas(canvasRef.current);
-    axios.get(`http://localhost:3000/image?id=${id}`).then((res) => {
+    axios.get(`https://paintonline.onrender.com/image?id=${id}`).then((res) => {
       const ctx = canvasRef.current?.getContext("2d");
       const img = new Image();
       img.src = res.data;
@@ -43,7 +43,7 @@ const Canvas = observer(() => {
 
   useEffect(() => {
     if (canvasState.username) {
-      const socket = new WebSocket("ws://localhost:8000");
+      const socket = new WebSocket("wss://paintonline.onrender.com");
       canvasState.setSocket(socket);
       canvasState.setSessionID(id);
       toolState.setTool(new Brush(canvasRef.current, socket));
@@ -111,7 +111,7 @@ const Canvas = observer(() => {
 
   const mouseupHandler = () => {
     axios
-      .post(`http://localhost:3000/image?id=${id}`, {
+      .post(`https://paintonline.onrender.com/image?id=${id}`, {
         img: canvasRef.current?.toDataURL(),
       })
       .then((res) => console.log(res));

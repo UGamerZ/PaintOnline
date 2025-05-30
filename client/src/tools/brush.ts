@@ -23,6 +23,7 @@ export default class Brush extends Tool {
       JSON.stringify({
         method: "draw",
         id: canvasState.data?.id,
+        username: canvasState.data?.username,
         figure: {
           type: "finish",
         },
@@ -41,6 +42,7 @@ export default class Brush extends Tool {
         JSON.stringify({
           method: "draw",
           id: canvasState.data?.id,
+          username: canvasState.data?.username,
           figure: {
             type: "brush",
             strokeCol: this.ctx?.strokeStyle,
