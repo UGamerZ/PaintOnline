@@ -18,7 +18,7 @@ export class AppController {
       const img = data.img.replace('data:image/png;base64,', '');
       const imgPath = path.resolve(__dirname, '..', 'static');
       if (!fs.existsSync(imgPath)) fs.mkdirSync(imgPath);
-      fs.appendFileSync(path.resolve(imgPath, `${id}.jpg`), img, {
+      fs.writeFileSync(path.resolve(imgPath, `${id}.jpg`), img, {
         encoding: 'base64',
       });
       return 'File uploaded';
