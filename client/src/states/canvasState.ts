@@ -45,12 +45,11 @@ class CanvasState {
 
   undo() {
     if (this.canvas) {
-      const ctx = this.canvas.getContext("2d");
       const dataUrl = this.undoList.pop();
       if (dataUrl) {
         this.redoList.push(this.canvas.toDataURL());
         this.sendUndoAction(dataUrl);
-      } else ctx?.clearRect(0, 0, this.canvas.height, this.canvas.height);
+      }
     }
   }
 
