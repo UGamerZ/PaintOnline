@@ -91,6 +91,9 @@ const Canvas = observer(() => {
       case "eraser":
         Eraser.draw(ctx, figure);
         break;
+      case "action":
+        canvasState.fillWithImg(figure?.saved, ctx, canvasRef.current);
+        break;
       case "finish":
         if (ctx) {
           if (toolState.tool?.stroke) ctx.strokeStyle = toolState.tool.stroke;

@@ -49,29 +49,46 @@ class CanvasState {
       const dataUrl = this.undoList.pop();
       if (dataUrl) {
         this.redoList.push(this.canvas.toDataURL());
-        this.fillWithImg(dataUrl, ctx);
+        this.sendUndoAction(dataUrl);
       } else ctx?.clearRect(0, 0, this.canvas.height, this.canvas.height);
     }
   }
 
   redo() {
     if (this.canvas) {
-      const ctx = this.canvas.getContext("2d");
       const dataUrl = this.redoList.pop();
       if (dataUrl) {
         this.undoList.push(this.canvas.toDataURL());
-        this.fillWithImg(dataUrl, ctx);
+        this.sendUndoAction(dataUrl);
       }
     }
   }
 
-  fillWithImg(dataUrl: string, ctx: CanvasRenderingContext2D | null) {
+  sendUndoAction(dataUrl: string) {
+    this.socket.send(
+      JSON.stringify({
+        id: this.sessionID,
+        username: this.data?.username,
+        method: "draw",
+        figure: {
+          type: "action",
+          saved: dataUrl,
+        },
+      }),
+    );
+  }
+
+  fillWithImg(
+    dataUrl: string,
+    ctx: CanvasRenderingContext2D | null | undefined,
+    canvas: HTMLCanvasElement | null,
+  ) {
     const img = new Image();
     img.src = dataUrl;
     img.onload = () => {
-      if (this.canvas) {
-        ctx?.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        ctx?.drawImage(img, 0, 0, this.canvas.width, this.canvas.height);
+      if (canvas) {
+        ctx?.clearRect(0, 0, canvas.width, canvas.height);
+        ctx?.drawImage(img, 0, 0, canvas.width, canvas.height);
       }
     };
   }
