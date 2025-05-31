@@ -81,14 +81,13 @@ class CanvasState {
   fillWithImg(
     dataUrl: string,
     ctx: CanvasRenderingContext2D | null | undefined,
-    canvas: HTMLCanvasElement | null,
   ) {
     const img = new Image();
     img.src = dataUrl;
     img.onload = () => {
-      if (canvas) {
-        ctx?.clearRect(0, 0, canvas.width, canvas.height);
-        ctx?.drawImage(img, 0, 0, canvas.width, canvas.height);
+      if (this.canvas) {
+        ctx?.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        ctx?.drawImage(img, 0, 0, this.canvas.width, this.canvas.height);
       }
     };
   }

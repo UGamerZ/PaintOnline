@@ -92,7 +92,8 @@ const Canvas = observer(() => {
         Eraser.draw(ctx, figure);
         break;
       case "action":
-        canvasState.fillWithImg(figure?.saved, ctx, canvasRef.current);
+        canvasState.fillWithImg(figure?.saved, ctx);
+        mouseupHandler();
         break;
       case "finish":
         if (ctx) {
