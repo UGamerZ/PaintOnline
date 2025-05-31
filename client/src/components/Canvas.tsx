@@ -49,7 +49,7 @@ const Canvas = observer(() => {
       toolState.setTool(new Brush(canvasRef.current, socket));
       canvasState.setAlertOpen(true);
 
-      socket.onclose() = () => {
+      socket.onclose = () => {
         socket = new WebSocket("https://paintonline.onrender.com");
         canvasState.setSocket(socket);
       };
