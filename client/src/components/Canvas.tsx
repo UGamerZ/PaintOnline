@@ -47,6 +47,7 @@ const Canvas = observer(() => {
       canvasState.setSocket(socket);
       canvasState.setSessionID(id);
       toolState.setTool(new Brush(canvasRef.current, socket));
+      canvasState.setAlertOpen(true);
 
       socket.onopen = () => {
         socket.send(
@@ -93,7 +94,6 @@ const Canvas = observer(() => {
         break;
       case "action":
         canvasState.fillWithImg(figure?.saved, ctx);
-        mouseupHandler();
         break;
       case "finish":
         if (ctx) {
@@ -111,6 +111,7 @@ const Canvas = observer(() => {
 
   const mousedownHandler = () => {
     canvasState.pushIntoUndo(canvasRef.current?.toDataURL());
+    mouseupHandler();
   };
 
   const mouseupHandler = () => {

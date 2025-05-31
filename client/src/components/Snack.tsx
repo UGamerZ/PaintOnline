@@ -8,7 +8,7 @@ const Snack = observer(() => {
       open={canvasState.alertOpen}
       autoHideDuration={3000}
       onClose={() => canvasState.setAlertOpen(false)}
-      message={"User " + canvasState.data?.username + " connected"}
+      message={canvasState.data?.username ? "User " + canvasState.data?.username + " connected" : "Connecting..."}
     />
   );
 });
