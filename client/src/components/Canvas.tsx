@@ -94,6 +94,7 @@ const Canvas = observer(() => {
         break;
       case "action":
         canvasState.fillWithImg(figure?.saved, ctx);
+        mouseupHandler();
         break;
       case "finish":
         if (ctx) {
@@ -111,15 +112,18 @@ const Canvas = observer(() => {
 
   const mousedownHandler = () => {
     canvasState.pushIntoUndo(canvasRef.current?.toDataURL());
-    mouseupHandler();
   };
 
   const mouseupHandler = () => {
-    axios
-      .post(`https://paintonline.onrender.com/image?id=${id}`, {
-        img: canvasRef.current?.toDataURL(),
-      })
-      .then((res) => console.log(res));
+    setTimeout(
+      () =>
+        axios
+          .post(`https://paintonline.onrender.com/image?id=${id}`, {
+            img: canvasState.canvas?.toDataURL(),
+          })
+          .then((res) => console.log(res)),
+      100,
+    );
   };
 
   return (
